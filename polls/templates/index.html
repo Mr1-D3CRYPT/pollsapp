@@ -1,0 +1,18 @@
+{% if latest_question_list %}
+    The polls are (Click on the questions to remove vote):
+    <ul>
+    {% for question in latest_question_list %}
+        <a style="text-decoration: none;" href="{{ question.id }}/"><h3>{{ question.question_text }}</h3></a>
+        <ul>
+            {% for choice in question.choice_set.all %}
+            <li>
+              {{ choice.choice_text }}
+              - Votes: {{ choice.votes }}
+            </li>
+            {% endfor %}
+          </ul>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}

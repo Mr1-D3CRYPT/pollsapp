@@ -1,0 +1,8 @@
+<h2>Question: {{ question.question_text }}</h2>
+<h3>Click on the choices to remove a vote</h3>
+<ul>
+{% for choice in question.choice_set.all %}
+    <li><a style="text-decoration: none; color: rgb(12, 103, 249);" href="{% url 'polls:remove_vote' choice.id %}">{{ choice.choice_text }}</a></li>
+{% endfor %}
+</ul>
+
